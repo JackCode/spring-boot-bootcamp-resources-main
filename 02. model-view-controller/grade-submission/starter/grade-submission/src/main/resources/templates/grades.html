@@ -18,10 +18,10 @@
           <th>Subject</th>
           <th>Score</th>
         </tr>
-        <tr th:object="${grade}">
-          <td th:text="*{name}"></td>
-          <td th:text="*{subject}"></td>
-          <td th:text="*{score}"></td>
+        <tr th:each="grade : ${grades}">
+          <td th:text="*{grade.name}"></td>
+          <td th:text="*{grade.subject}"></td>
+          <td th:text="*{grade.score}"></td>
         </tr>
       </table>
     </div>
