@@ -38,10 +38,8 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-
     public User() {
     }
-
 
     public String getFirstName() {
         return this.firstName;
@@ -82,8 +80,5 @@ public class User {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
-
-
-
 
 }

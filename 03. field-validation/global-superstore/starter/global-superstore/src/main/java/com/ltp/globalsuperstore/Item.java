@@ -10,7 +10,6 @@ import javax.validation.constraints.Past;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Item {
-
     private String category;
     @NotBlank(message = "Name cannot be blank.")
     private String name;
