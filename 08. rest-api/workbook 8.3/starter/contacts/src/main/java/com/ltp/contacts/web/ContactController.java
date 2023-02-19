@@ -2,6 +2,8 @@ package com.ltp.contacts.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +20,7 @@ import com.ltp.contacts.service.ContactService;
 
 @RestController
 public class ContactController {
-    
+
     @Autowired
     private ContactService contactService;
 
@@ -33,16 +35,16 @@ public class ContactController {
         Contact contact = contactService.getContactById(id);
         return new ResponseEntity<>(contact, HttpStatus.OK);
     }
-    
+
     @PostMapping("/contact")
-    public ResponseEntity<HttpStatus> createContact(@RequestBody Contact contact) {
+    public ResponseEntity<HttpStatus> createContact(@RequestBody @Valid Contact contact) {
         contactService.saveContact(contact);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/contact/{id}")
-    public ResponseEntity<Contact> updateContact(@PathVariable String id, @RequestBody Contact contact) {
-        contactService.updateContact(id, contact);   
+    public ResponseEntity<Contact> updateContact(@PathVariable String id, @RequestBody @Valid Contact contact) {
+        contactService.updateContact(id, contact);
         return new ResponseEntity<Contact>(contactService.getContactById(id), HttpStatus.OK);
     }
 
@@ -51,6 +53,5 @@ public class ContactController {
         contactService.deleteContact(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
 
 }
